@@ -25,9 +25,18 @@ If you haven’t installed Python yet, you need to do so.
 
 Create and activate a virtual environment:
 
+##### Windows:  
+
 ```bash
 python -m venv .env
 .\.env\Scripts\activate
+```
+
+##### Linux:  
+
+```bash
+python3 -m venv .env
+source .\.env\bin\activate
 ```
 
 #### Install dependencies:
@@ -41,7 +50,7 @@ pip install datetime whitenoise Django
 ```bash
 python TaskMangement\manage.py migrate
 ```
----
+
 #### Run the project
 
 Windows:
@@ -50,25 +59,18 @@ Windows:
 start.bat
 ```
 
-#### Linux:
+#### Linux/macOS:
 
 ```bash
-sudo python TaskMangement\manage.py runserver 0.0.0.0:8000
+sudo python3 TaskMangement\manage.py runserver 0.0.0.0:8000
 ```
 
-#### macOS:
-
-```bash
-sudo python TaskMangement\manage.py runserver 0.0.0.0:8000
-```
----
 ### Configuration
 
 #### DEBUG
 
 In production, DEBUG must be set to False in the settings.py file.
 
----
 #### ALLOWED_HOSTS
 
 Make sure all necessary hosts are included in ALLOWED_HOSTS. Example:
@@ -82,12 +84,13 @@ get_ip_address(),
 ]
 
 ---
-Directory structure
-TaskMangement/ # Django project directory
-###### TaskMangement/ # Project configuration (settings, urls, wsgi, etc.)
-###### comments/ # Django app for comments
-###### manegement/ # Django app for task management
-###### static/ # Static files (CSS, JavaScript, images)
-###### staticfiles/ # Target folder for `collectstatic`
-###### db.sqlite3 # SQLite database file
-###### manage.py # Django management script
+#### Directory structure:
+
+TaskMangement/  Django project directory
+TaskMangement/  Project configuration (settings, urls, wsgi, etc.)
+comments/    Django app for comments
+manegement/  Django app for task management
+static/      Static files (CSS, JavaScript, images)
+staticfiles/ Target folder for `collectstatic`
+db.sqlite3/  SQLite database file
+ manage.py/  Django management script
