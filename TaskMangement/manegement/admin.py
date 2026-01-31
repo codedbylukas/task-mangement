@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import added_tasks, in_progress_tasks, completed_tasks, removed_tasks
 import socket
 from tkinter import messagebox
+import os
 
 # Register your models here.
 admin.site.register(added_tasks)
@@ -20,4 +21,8 @@ def get_ip_address():
     except Exception as e:
         return str(e)
 
-messagebox.showinfo("IP Address", f"Die Webseite ist erreichbar unter: http://{get_ip_address()}:8000/management/. Mit dem Bestätigen des Fensters wird der Server gestartet. ")#
+if os.environ.get("DISPLAY"):
+    messagebox.showinfo(
+        "IP Address",
+        f"Die Webseite ist erreichbar unter: http://{get_ip_address()}:8000/management/"
+    )
