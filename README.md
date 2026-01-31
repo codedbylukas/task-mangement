@@ -42,7 +42,7 @@ source .\.env\bin\activate
 #### Install dependencies:
 
 ```bash
-pip install datetime whitenoise Django
+pip install -r requirements.txt
 ```
 
 #### Migrate the database:
