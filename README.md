@@ -1,7 +1,5 @@
 # TaskMangement
 
----
-
 TaskMangement is a Django project designed for managing tasks. It consists of two main apps:
 
 ##### manegement – Handles adding, editing, and deleting tasks.
