@@ -1,0 +1,38 @@
+name: "CodeQL JavaScript Analysis"
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  schedule:
+    - cron: "0 3 * * 1"
+
+jobs:
+  analyze:
+    name: Analyze JS
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Initialisiert CodeQL für reines JavaScript
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript # Nur JS Fokus
+          # Verwendet die Standard-Sicherheitsabfragen
+          queries: security-extended 
+
+      # Bei JS überspringt Autobuild meist den Compiler-Part 
+      # und analysiert direkt den Quellcode
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
